@@ -12,5 +12,5 @@ Write Css with traversing from Parent to child
 css -> parenttagname >> childtagname
 
 If needds to write the locator based on text
-tect=''
+text=''
 
