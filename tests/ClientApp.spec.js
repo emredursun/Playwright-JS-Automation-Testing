@@ -20,6 +20,9 @@ test("Browser Context Playwrigth Test", async ({ page }) => {
   await expect(adidasCard).toContainText("ADIDAS ORIGINAL");
   console.log(await allTitles.allTextContents());
 
+  await page.locator(".card-body b").first().waitFor();
+  const titles = await page.locator(".card-body b").allTextContents();
+  console.log(titles); 
 
 
 });
