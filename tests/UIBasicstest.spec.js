@@ -11,6 +11,7 @@ test.only("Browser Context Playwrigth Test", async ({ browser }) => {
   const firstCard = page.locator(".card-body .card-title a").nth(0);
   const secondCard = page.locator(".card-body .card-title a").nth(1);
   const lastCard = page.locator(".card-body .card-title a").last();
+  const allCards = page.locator(".card-body .card-title a");
 
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   console.log(await page.title());
@@ -31,6 +32,7 @@ test.only("Browser Context Playwrigth Test", async ({ browser }) => {
   console.log(await firstCard.textContent());
   console.log(await secondCard.textContent());
   console.log(await lastCard.textContent());
+  console.log(await allCards.allTextContents());
 
 
 });
