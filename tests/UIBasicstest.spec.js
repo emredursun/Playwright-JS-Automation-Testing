@@ -1,6 +1,6 @@
 const { test, expect } = require("@playwright/test");
 
-test("Browser Context Playwrigth Test", async ({ browser }) => {
+test.only("Browser Context Playwrigth Test", async ({ browser }) => {
   const context = await browser.newContext();
   const page = await context.newPage();
 
@@ -12,6 +12,9 @@ test("Browser Context Playwrigth Test", async ({ browser }) => {
   await page.locator("[type='password']").fill("learning");
   await page.locator("[type='checkbox']").check();
   await page.locator("#signInBtn").click();
+  // wait until this locator shown up page
+  console.log(await page.locator("[style*='block']").textContent());
+  await expect(page.locator("[style*='block']")).toContainText("Incorrect username/password.");
 });
 
 test("Page Playwrigth Test", async ({ page }) => {
