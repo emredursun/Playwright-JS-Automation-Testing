@@ -1,6 +1,6 @@
 const { test, expect } = require("@playwright/test");
 
-test.only("Browser Context Playwrigth Test", async ({ browser }) => {
+test("Browser Context Playwrigth Test", async ({ browser }) => {
   const context = await browser.newContext();
   const page = await context.newPage();
 
@@ -42,4 +42,24 @@ test("Page Playwrigth Test", async ({ page }) => {
   // get title - assertion
   console.log(await page.title());
   await expect(page).toHaveTitle("Google");
+});
+
+
+test.only("UI Controls", async ({page})=>{
+  const userName = page.locator("#username");
+  const password = page.locator("[type='password']");
+  const userCheckBox = page.locator(".radiotextsty").nth("1");
+  const signInBtn = page.locator("#signInBtn");
+  const dropdownElement = page.locator("select.form-control");
+  const okayBtn = page.locator("#okayBtn");
+
+  await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+  await userName.fill("rahulshetty");
+  await password.fill("learning");
+  await userCheckBox.click();
+  await okayBtn.click();
+  await dropdownElement.selectOption("Consultant");
+  await signInBtn.click();
+  await page.pause();
+
 });
