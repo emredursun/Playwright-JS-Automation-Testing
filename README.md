@@ -24,5 +24,3 @@ The course is divided into different sections:
 - Mix of Web & API Tests including Network mocking – 25%
 - Playwright Advanced Framework features – 25%
 - JavaScript Basics for Beginners (Optional)
-
-For beginners, a 2-hour JavaScript video is included in the last section of this course which covers all JS basics from scratch.
