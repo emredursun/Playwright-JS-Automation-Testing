@@ -53,6 +53,7 @@ test.only("UI Controls", async ({page})=>{
   const dropdownElement = page.locator("select.form-control");
   const okayBtn = page.locator("#okayBtn");
   const termsAndConditionCheckBox = page.locator("#terms");
+  const blinkingTextLink = page.locator("[href*='documents-request']");
 
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   await userName.fill("rahulshetty");
@@ -67,6 +68,9 @@ test.only("UI Controls", async ({page})=>{
   await termsAndConditionCheckBox.uncheck();
   expect(await termsAndConditionCheckBox.isChecked()).toBeFalsy();
   await signInBtn.click();
-  // await page.pause();
+  await expect(blinkingTextLink).toHaveAttribute('class', 'blinkingText');
+
+
+    // await page.pause();
 
 });
