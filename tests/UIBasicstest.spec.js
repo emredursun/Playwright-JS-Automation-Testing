@@ -52,14 +52,21 @@ test.only("UI Controls", async ({page})=>{
   const signInBtn = page.locator("#signInBtn");
   const dropdownElement = page.locator("select.form-control");
   const okayBtn = page.locator("#okayBtn");
+  const termsAndConditionCheckBox = page.locator("#terms");
 
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   await userName.fill("rahulshetty");
   await password.fill("learning");
   await userCheckBox.click();
   await okayBtn.click();
+  expect(userCheckBox).toBeChecked();
+  // console.log(await userCheckBox.isChecked());
   await dropdownElement.selectOption("Consultant");
+  await termsAndConditionCheckBox.click();
+  expect(termsAndConditionCheckBox).toBeChecked();
+  await termsAndConditionCheckBox.uncheck();
+  expect(await termsAndConditionCheckBox.isChecked()).toBeFalsy();
   await signInBtn.click();
-  await page.pause();
+  // await page.pause();
 
 });
