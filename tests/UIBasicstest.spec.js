@@ -70,7 +70,31 @@ test.only("UI Controls", async ({page})=>{
   await signInBtn.click();
   await expect(blinkingTextLink).toHaveAttribute('class', 'blinkingText');
 
-
     // await page.pause();
+});
+
+test.only("Child windows handling", async ({browser})=>{
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  const userName = page.locator("#username");
+
+  await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+  const blinkingTextLink = page.locator("[href*='documents-request']");
+  
+  const [newPage] = await Promise.all(
+    [
+      context.waitForEvent('page'), // Listen for any new page pending, rejected, fulfilled
+      blinkingTextLink.click(), // New page is opened
+    ])   
+  
+  const text = await newPage.locator(".red").textContent();
+  const arrayText = text.split("@");
+  const domain = arrayText[1].split(" ")[0];
+  console.log(domain);
+
+await page.locator("#username").fill(domain);
+    await page.pause();
+console.log(await page.locator("#username").textContent());
+  
 
 });
