@@ -45,7 +45,7 @@ test("Page Playwrigth Test", async ({ page }) => {
 });
 
 
-test.only("UI Controls", async ({page})=>{
+test("UI Controls", async ({page})=>{
   const userName = page.locator("#username");
   const password = page.locator("[type='password']");
   const userCheckBox = page.locator(".radiotextsty").nth("1");
