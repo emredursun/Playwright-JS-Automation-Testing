@@ -98,3 +98,17 @@ console.log(await page.locator("#username").textContent());
   
 
 });
+
+test('How to use codegen', async ({ page }) => {
+  await page.goto('https://www.google.com/');
+  await page.getByRole('button', { name: 'Alles accepteren' }).click();
+  await page.getByRole('button', { name: 'Google Zoeken' }).click();
+  await page.getByRole('img').nth(2).click();
+  await page.locator('.SDkEP').click();
+  await page.getByLabel('Zoek', { exact: true }).fill('Apple');
+  await page.getByRole('link', { name: 'Apple' }).click();
+  await page.getByLabel('Shop', { exact: true }).getByRole('link', { name: 'Mac' }).click();
+});
+
+
+
