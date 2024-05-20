@@ -73,7 +73,7 @@ test("UI Controls", async ({page})=>{
     // await page.pause();
 });
 
-test.only("Child windows handling", async ({browser})=>{
+test("Child windows handling", async ({browser})=>{
   const context = await browser.newContext();
   const page = await context.newPage();
   const userName = page.locator("#username");
@@ -92,9 +92,9 @@ test.only("Child windows handling", async ({browser})=>{
   const domain = arrayText[1].split(" ")[0];
   console.log(domain);
 
-await page.locator("#username").fill(domain);
-    await page.pause();
-console.log(await page.locator("#username").textContent());
+  await page.locator("#username").fill(domain);
+  // await page.pause();
+  console.log(await page.locator("#username").textContent());
   
 
 });
